@@ -3,7 +3,7 @@ require("express")().listen(1343);
 const db = require("quick.db");
 const discord = require("discord.js");
 const client = new discord.Client({ disableEveryone: true });
-client.login("token");
+client.login("NzUwNzAyMTAwNDU0OTY1MjU4.X0-X0A.XHXV024Dd_HDuDh9yReW1Dbcxik");
 const fetch = require("node-fetch");
 const fs = require('fs')
 
@@ -26,7 +26,7 @@ db.set("linkler", [])
 })
 
 client.on("ready", () => {
-  client.user.setActivity(`u.help | ${db.get("linkler").length} / ${client.guilds.size}`)
+  client.user.setActivity(`!ekle | ${db.get("linkler").length} / ${client.guilds.size}`)
   console.log(`Logined`)
 })
 
@@ -34,14 +34,14 @@ client.on("ready", () => {
 client.on("message", message => {
   if(message.author.bot) return;
   var spl = message.content.split(" ");
-  if(spl[0] == "u.add") {
+  if(spl[0] == "q.ekle") {
   var link = spl[1]
   fetch(link).then(() => {
     if(db.get("linkler").map(z => z.url).includes(link)) return message.channel.send("<:asuna_no:732219380795965471> Already Available!")
-    message.channel.send("<:asuna_yes:732219381085503529> Successful!");
+    message.channel.send("⚡|Başarılı");
     db.push("linkler", { url: link, owner: message.author.id})
   }).catch(e => {
-    return message.channel.send("<:asuna_no:732219380795965471> " + e)
+    return message.channel.send(":x: uptime yaptığımız sistemde hata ---> " + e)
   })
   }
 })
@@ -62,7 +62,7 @@ const Discord = require('discord.js');
 client.on("message", message => {
   if(message.author.bot) return;
     var spl = message.content.split(" ");
-  if(spl[0] == "u.help") {
+  if(spl[0] == "u.chjfdjgsthcwtgvhelp") {
 let embed = new Discord.RichEmbed()
 .setColor('#4ca74c')
 .addField(`Uptime Bot v1.0 Help`, `Includes a system that keeps uptime bot glitch sites open 24/7. The links in the system operate 24/7 without any maintenance.`)
@@ -103,10 +103,10 @@ message.channel.send(`**Uptime Bot Commands v1.0**
 
 client.on("message", async message => {
 
-  if(!message.content.startsWith("u.eval")) return;
-  if(!["689169122604744833","689169122604744833"].includes(message.author.id)) return;
-  var args = message.content.split("u.eval")[1]
-  if(!args) return message.channel.send("<:asuna_no:732219380795965471> ..")
+  if(!message.content.startsWith("q.eval")) return;
+  if(!["640250146453454848","611297389063438360"].includes(message.author.id)) return;
+  var args = message.content.split("q.eval")[1]
+  if(!args) return message.channel.send(":x: bu kod bot sahiplerine aittir ..")
   
       const code = args
     
